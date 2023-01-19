@@ -6,6 +6,8 @@ import { METADATA_AUTHORIZED_KEY } from '@core/core-module.config';
 import * as packageJson from '../package.json';
 import { AppModule } from './app.module';
 
+const PORT = process.env.PORT || 3030
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
@@ -21,6 +23,6 @@ async function bootstrap() {
   app.enableCors();
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(4000);
+  await app.listen(PORT);
 }
 bootstrap();
